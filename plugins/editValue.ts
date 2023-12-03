@@ -28,7 +28,7 @@ const data: JsonData = JSON.parse(
 );
 
 function replaceColorValues(
-  obj: TokenSet | Token,
+  obj: TokenSet | Token | string,
   globalColors: TokenSet
 ): void {
   Object.keys(obj).forEach((key) => {
