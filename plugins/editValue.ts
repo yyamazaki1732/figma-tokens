@@ -33,7 +33,10 @@ function replaceColorValues(
 ): void {
   Object.keys(obj).forEach((key) => {
     if (typeof obj[key as keyof typeof obj] === "object") {
-      replaceColorValues(obj[key], globalColors); // 再帰的に探索
+      replaceColorValues(
+        obj[key as keyof typeof obj] as TokenSet | Token,
+        globalColors
+      ); // 再帰的に探索
     } else if (
       typeof obj[key] === "string" &&
       obj[key].startsWith("{") &&
