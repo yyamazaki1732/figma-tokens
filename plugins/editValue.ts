@@ -27,21 +27,13 @@ const data: JsonData = JSON.parse(
   fs.readFileSync("./data/tokens.json", "utf8")
 );
 
-const isObject = (value: any): value is Token | TokenSet => {
-  const result: Token | TokenSet = value && typeof value === "object";
-  return !!result;
-};
-
 function replaceColorValues(
-  obj: TokenSet | Token | string,
+  obj: TokenSet | Token,
   globalColors: TokenSet
 ): void {
   Object.keys(obj).forEach((key) => {
-    if (isObject(obj[key])) {
-      replaceColorValues(
-        obj[key as keyof typeof obj] as TokenSet | Token,
-        globalColors
-      ); // 再帰的に探索
+    if (typeof obj[key] === "object") {
+      replaceColorValues(obj[key], globalColors); // 再帰的に探索
     } else if (
       typeof obj[key] === "string" &&
       obj[key].startsWith("{") &&
