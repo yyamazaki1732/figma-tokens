@@ -27,12 +27,17 @@ const data: JsonData = JSON.parse(
   fs.readFileSync("./data/tokens.json", "utf8")
 );
 
+const isObject = (value: any): value is Token | TokenSet => {
+  const result: Token | TokenSet = value && typeof value === "object";
+  return !!result;
+};
+
 function replaceColorValues(
   obj: TokenSet | Token | string,
   globalColors: TokenSet
 ): void {
   Object.keys(obj).forEach((key) => {
-    if (typeof obj[key as keyof typeof obj] === "object") {
+    if (isObject(obj[key])) {
       replaceColorValues(
         obj[key as keyof typeof obj] as TokenSet | Token,
         globalColors
