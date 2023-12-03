@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import data from "./plugins/editValue";
+import data from "./plugins/editValue.ts";
 
 export default {
   content: [
