@@ -28,6 +28,6 @@ function replaceColorValues(obj, globalColors) {
 }
 
 replaceColorValues(data.theme.colors, data.global.colors);
-console.log(JSON.stringify(data, null, 2));
+// console.log(JSON.stringify(data, null, 2));
 
 export default data;
