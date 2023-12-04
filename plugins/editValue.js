@@ -2,7 +2,7 @@ import fs from "fs";
 
 const data = JSON.parse(fs.readFileSync("./data/tokens.json", "utf8"));
 
-function replaceColorValues(obj: any, globalColors: any): void {
+function replaceColorValues(obj, globalColors) {
   Object.keys(obj).forEach((key) => {
     if (typeof obj[key] === "object") {
       replaceColorValues(obj[key], globalColors); // 再帰的に探索
@@ -26,5 +26,5 @@ function replaceColorValues(obj: any, globalColors: any): void {
 }
 
 replaceColorValues(data.theme.colors, data.global.colors);
-
+// console.log(JSON.stringify(data, null, 2));
 export default data;
