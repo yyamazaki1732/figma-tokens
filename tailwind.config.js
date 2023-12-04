@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-// import data from "./plugins/editValue.ts";
-import variablesData from "./plugins/editVariablesData.js";
+import data from "./plugins/editTokensData";
+import variablesData from "./plugins/editVariablesData";
 
 module.exports = {
   content: [
