@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       colors: () => ({
-        text: data.theme.colors.text,
-        surface: data.theme.colors.surface,
+        text: data.theme.colors.text as any,
+        surface: data.theme.colors.surface as any,
       }),
     },
   },
