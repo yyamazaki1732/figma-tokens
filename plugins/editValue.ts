@@ -1,36 +1,8 @@
 import fs from "fs";
 
-interface Token {
-  value: string;
-  type: string;
-  description?: string;
-}
+const data = JSON.parse(fs.readFileSync("./data/tokens.json", "utf8"));
 
-interface TokenSet {
-  [key: string]: Token | TokenSet;
-}
-
-interface JsonData {
-  global: {
-    [category: string]: TokenSet;
-  };
-  theme: {
-    colors: TokenSet;
-  };
-  $themes: any[];
-  $metadata: {
-    tokenSetOrder: string[];
-  };
-}
-
-const data: JsonData = JSON.parse(
-  fs.readFileSync("./data/tokens.json", "utf8")
-);
-
-function replaceColorValues(
-  obj: TokenSet | Token,
-  globalColors: TokenSet
-): void {
+function replaceColorValues(obj: any, globalColors: any): void {
   Object.keys(obj).forEach((key) => {
     if (typeof obj[key] === "object") {
       replaceColorValues(obj[key], globalColors); // 再帰的に探索
